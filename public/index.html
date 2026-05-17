@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Workout app</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        />
+        <link href="css/components/navbar.css" rel="stylesheet" />
+        <link href="css/global.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <nav id="nav-bar">
+            <button type="button" id="nutrition-button">Nutrition</button>
+            <button type="button" id="workout-button">Workout</button>
+        </nav>
+
+        <section id="search-bar">
+            <input type="text" name="search-bar" value="" id="search-input" />
+        </section>
+
+        <section id="recipes">
+            <article class="recipe">
+                <img src="images/download.jfif" alt="" />
+                <h3>Tomato Soup</h3>
+
+                <div class="recipe-info">
+                    <ul class="recipe-nutrients">
+                        <li class="calorie-wrapper">
+                            <div class="wrapper">
+                                <svg>
+                                    <circle class="bg"></circle>
+                                    <circle
+                                        class="progress"
+                                        id="progressCircle"
+                                    ></circle>
+                                </svg>
+                                <i
+                                    class="fa-solid fa-fire-flame-curved icon"
+                                ></i>
+                            </div>
+                            <p class="calorie-value nutrient-value">1200</p>
+                        </li>
+                        <li class="fat-wrapper">
+                            <div class="wrapper">
+                                <svg>
+                                    <circle class="bg"></circle>
+                                    <circle
+                                        class="progress"
+                                        id="progressCircle"
+                                    ></circle>
+                                </svg>
+                                <i class="fa-solid fa-droplet icon"></i>
+                            </div>
+                            <p class="fat-value nutrient-value">1200</p>
+                        </li>
+                        <li class="fiber-wrapper">
+                            <div class="wrapper">
+                                <svg>
+                                    <circle class="bg"></circle>
+                                    <circle
+                                        class="progress"
+                                        id="progressCircle"
+                                    ></circle>
+                                </svg>
+                                <i class="fa-brands fa-pagelines icon"></i>
+                            </div>
+                            <p class="fiber-value nutrient-value">1200</p>
+                        </li>
+                        <li class="protein-wrapper">
+                            <div class="wrapper">
+                                <svg>
+                                    <circle class="bg"></circle>
+                                    <circle
+                                        class="progress"
+                                        id="progressCircle"
+                                    ></circle>
+                                </svg>
+                                <i class="fa-solid fa-drumstick-bite icon"></i>
+                            </div>
+                            <p class="protein-value nutrient-value">1200</p>
+                        </li>
+                        <li class="carbs-wrapper">
+                            <div class="wrapper">
+                                <svg>
+                                    <circle class="bg"></circle>
+                                    <circle
+                                        class="progress"
+                                        id="progressCircle"
+                                    ></circle>
+                                </svg>
+                                <i class="fa-solid fa-wheat-awn icon"></i>
+                            </div>
+                            <p class="carbs-value nutrient-value">1200</p>
+                        </li>
+                        <li class="sodium-wrapper">
+                            <div class="wrapper">
+                                <svg>
+                                    <circle class="bg"></circle>
+                                    <circle
+                                        class="progress"
+                                        id="progressCircle"
+                                    ></circle>
+                                </svg>
+                                <i class="fa-solid fa-mound icon"></i>
+                            </div>
+                            <p class="sodium-value nutrient-value">1200</p>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="recipe-add-button">Add</button>
+            </article>
+            <article class="recipe">
+                <h3>Tomato Soup</h3>
+
+                <div class="ingredient-list">
+                    <div class="ingredient">
+                        <p class="ingredient-name">Tomato</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Garlic</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Olive oil</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Basil</p>
+                    </div>
+                </div>
+            </article>
+            <article class="recipe">
+                <h3>Tomato Soup</h3>
+
+                <div class="ingredient-list">
+                    <div class="ingredient">
+                        <p class="ingredient-name">Tomato</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Garlic</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Olive oil</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Basil</p>
+                    </div>
+                </div>
+            </article>
+            <article class="recipe">
+                <h3>Tomato Soup</h3>
+
+                <div class="ingredient-list">
+                    <div class="ingredient">
+                        <p class="ingredient-name">Tomato</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Garlic</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Olive oil</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Basil</p>
+                    </div>
+                </div>
+            </article>
+            <article class="recipe">
+                <h3>Tomato Soup</h3>
+
+                <div class="ingredient-list">
+                    <div class="ingredient">
+                        <p class="ingredient-name">Tomato</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Garlic</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Olive oil</p>
+                    </div>
+                    <div class="ingredient">
+                        <p class="ingredient-name">Basil</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </body>
+    <script src="script.js"></script>
+</html>

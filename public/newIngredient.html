@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>New Ingredient</title>
+
+        <link href="css/components/navbar.css" rel="stylesheet" />
+        <link href="css/global.css" rel="stylesheet" />
+        <link href="css/newIngredientStyle.css" rel="stylesheet" />
+    </head>
+    <body>
+        <nav id="nav-bar">
+            <button type="button" id="nutrition-button">Nutrition</button>
+            <button type="button" id="workout-button">Workout</button>
+        </nav>
+
+        <section id="search-bar">
+            <input type="text" name="search-bar" value="" id="search-input" />
+        </section>
+
+        <section id="form-wrapper">
+            <form id="ingredient-form">
+                <h2>Ingredient Form</h2>
+
+                <label for="ingredient-fdcId-input">Ingredient fdc Id:</label
+                ><input
+                    type="text"
+                    id="ingredient-fdcId-input"
+                    name="fdcId"
+                    placeholder="Fdc Id... (optional)"
+                    value=""
+                />
+
+                <label for="ingredient-name-input">Ingredient Name:</label>
+                <input
+                    type="text"
+                    id="ingredient-name-input"
+                    name="name"
+                    placeholder="Name... (optional)"
+                    value=""
+                />
+
+                <label for="ingredient-serving-size-input"
+                    >Ingredient Serving Size:</label
+                ><input
+                    type="text"
+                    id="ingredient-serving-size-input"
+                    name="servingSize"
+                    placeholder="Serving size... (optional)"
+                    value=""
+                />
+                <label for="ingredient-cost-100-input"
+                    >Ingredient cost per 100g:</label
+                ><input
+                    type="text"
+                    id="ingredient-cost-100-input"
+                    name="costPer100"
+                    placeholder="Cost per 100g... (optional)"
+                    value=""
+                />
+                <label for="ingredient-category-input"
+                    >Ingredient Category:</label
+                >
+                <select name="category" id="ingredient-category-input">
+                    <option value="">Category...</option>
+                    <option value="vegetable">Vegetable</option>
+                    <option value="meat">Meat</option>
+                    <option value="fruit">Fruit</option>
+                    <option value="grain">Grain</option>
+                    <option value="desert">Desert</option>
+                    <option value="other">Other</option>
+                </select>
+                <h3>Manual Nutrients</h3>
+
+                <label for="calorie-per-100">Calorie per 100g:</label>
+                <input
+                    type="text"
+                    name="calorie"
+                    id="calorie-per-100"
+                    placeholder="Calorie"
+                    value=""
+                />
+
+                <label for="fat-per-100">Fat per 100g:</label>
+                <input
+                    type="text"
+                    name="fat"
+                    id="fat-per-100"
+                    placeholder="Fat"
+                    value=""
+                />
+
+                <label for="fiber-per-100">Fiber per 100g:</label>
+                <input
+                    type="text"
+                    name="fiber"
+                    id="fiber-per-100"
+                    placeholder="Fiber"
+                    value=""
+                />
+
+                <label for="protein-per-100">Protien per 100g:</label>
+                <input
+                    type="text"
+                    name="protein"
+                    id="protein-per-100"
+                    placeholder="Protein"
+                    value=""
+                />
+
+                <label for="carbs-per-100">Carbs per 100g:</label>
+                <input
+                    type="text"
+                    name="carbs"
+                    id="carbs-per-100"
+                    placeholder="Carbs"
+                    value=""
+                />
+
+                <label for="sodium-per-100">Sodium per 100g:</label>
+                <input
+                    type="text"
+                    name="sodium"
+                    id="sodium-per-100"
+                    placeholder="Sodium"
+                    value=""
+                />
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </body>
+    <script src="newIngredientScript.js"></script>
+</html>
