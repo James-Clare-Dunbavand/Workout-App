@@ -2,28 +2,58 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const Recipe = require("../models/recipeModel.js");
 const Ingredient = require("../models/ingredientModel.js");
 
+const calculateRecipeNutrients = (recipe) => {
+    return recipe.ingredients.reduce((acc, { ingredient, quantity }) => {
+        ingredient.foodNutrients.forEach(({ foodNutrient, amountPer100 }) => {
+            if (!acc[foodNutrient.name]) {
+                acc[foodNutrient.name] = 0;
+            }
+            acc[foodNutrient.name] += Math.round(
+                (amountPer100 * quantity) / 100,
+            );
+        });
+        return acc;
+    }, {});
+};
+
 const getRecipe = async (req, res) => {
     const { recipeName } = req.params;
     if (!recipeName) {
         throw new BadRequestError("Please provide recipe name");
     }
-    const recipe = await Recipe.findOne({ name: recipeName }).populate(
-        "ingredients.ingredient",
-    );
+    const recipe = await Recipe.findOne({ name: recipeName })
+        .populate("ingredients.ingredient")
+        .lean();
     if (!recipe) {
         throw new NotFoundError(`${recipeName} does not exist`);
     }
+    recipe.foodNutrients = calculateRecipeNutrients(recipe);
     res.status(200).json(recipe);
 };
 
 const getAllRecipes = async (req, res) => {
-    const recipes = await Recipe.find().populate("ingredients.ingredient");
+    const recipes = await Recipe.find()
+        .populate({
+            path: "ingredients.ingredient",
+            populate: { path: "foodNutrients.foodNutrient" },
+        })
+        .lean();
+
+    recipes.forEach((recipe) => {
+        recipe.foodNutrients = calculateRecipeNutrients(recipe);
+    });
     res.status(200).json(recipes);
 };
 
 const addRecipe = async (req, res) => {
-    const { name, recipeIngredients } = req.body;
-    if (!name || !recipeIngredients) {
+    const {
+        name,
+        ingredients: recipeIngredients,
+        imageUrl,
+        portions,
+    } = req.body;
+    console.log(req.body);
+    if (!name || !recipeIngredients || imageUrl === "") {
         throw new BadRequestError("Please provide recipe details");
     }
     const ingredientNames = recipeIngredients.map(
@@ -50,6 +80,8 @@ const addRecipe = async (req, res) => {
     const newRecipe = await Recipe.create({
         name: name,
         ingredients: ingredientsWraper,
+        imageUrl,
+        portions: portions ?? undefined,
     });
     res.status(201).json({ recipe: newRecipe });
 };

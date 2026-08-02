@@ -19,11 +19,11 @@ const addIngredients = async (req, res) => {
     if (ingredients === null || ingredients == []) {
         throw new BadRequestError("Please provide ingredients to add");
     }
-    console.log(req.body);
     console.log(ingredients);
     const fdcIngredientIds = ingredients
         .filter(({ fdcId }) => fdcId != null)
         .map(({ fdcId }) => fdcId);
+    console.log(fdcIngredientIds);
     const fdcIngredientsMap =
         fdcIngredientIds.length > 0
             ? await ingredientUtils.fetchFdcIngredients(fdcIngredientIds)
@@ -74,65 +74,7 @@ const getAllIngredient = async (req, res) => {
     const ingredients = response.map((item) => {
         return ingredientUtils.responseIngredient(item);
     });
-    res.status(200).json({ ingredients: ingredients });
-};
-
-const addIngredientManualOld = async (req, res) => {
-    const { ingredient } = req.body;
-    const foodData = ingredient.foodData;
-    if (
-        !ingredient.fdcId &&
-        !(
-            foodData.nutrients.calorie &&
-            foodData.nutrients.fat &&
-            foodData.nutrients.fiber &&
-            foodData.nutrients.protein &&
-            foodData.nutrients.carbs &&
-            foodData.nutrients.sodium
-        )
-    ) {
-        throw new BadRequestError(
-            "Please provide either fdcId or manual nutrients",
-        );
-    }
-
-    const ingredientObject = {
-        name: foodData.name,
-        category: foodData.category,
-        servingSize: foodData.servingSize,
-        costPerServing: foodData.costPerServing,
-        foodNutrients: [
-            {
-                foodNutrient: nutrientIds.calorie,
-                amountPer100: foodData.nutrients?.calorie,
-            },
-            {
-                foodNutrient: nutrientIds.fat,
-                amountPer100: foodData.nutrients?.fat,
-            },
-            {
-                foodNutrient: nutrientIds.fiber,
-                amountPer100: foodData.nutrients?.fiber,
-            },
-            {
-                foodNutrient: nutrientIds.protein,
-                amountPer100: foodData.nutrients?.protein,
-            },
-            {
-                foodNutrient: nutrientIds.carbs,
-                amountPer100: foodData.nutrients?.carbs,
-            },
-            {
-                foodNutrient: nutrientIds.sodium,
-                amountPer100: foodData.nutrients?.sodium,
-            },
-        ],
-    };
-
-    const newIngredient = await Ingredient.create(ingredientObject);
-    return res
-        .status(201)
-        .json(ingredientUtils.responseIngredient(newIngredient));
+    res.status(200).json(ingredients);
 };
 
 const deleteIngredient = async (req, res) => {
@@ -167,7 +109,6 @@ const testFunc = (number) => {
 module.exports = {
     testFunc,
     getIngredient,
-    addIngredientManualOld,
     getAllIngredient,
     deleteIngredient,
     updateIngredient,

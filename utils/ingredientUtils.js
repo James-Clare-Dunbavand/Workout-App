@@ -4,6 +4,8 @@ const Ingredient = require("../models/ingredientModel.js");
 
 const addIngredient = async (reqIngredient, fdcMap) => {
     let formattedIngredient;
+
+    console.log(JSON.stringify(fdcMap.get(reqIngredient.fdcId), null, 2));
     reqIngredient.fdcId
         ? (formattedIngredient = await fdcIngredientToModelFormat(
               fdcMap.get(reqIngredient.fdcId),
@@ -14,29 +16,37 @@ const addIngredient = async (reqIngredient, fdcMap) => {
         reqIngredient,
         formattedIngredient,
     );
+    console.log(JSON.stringify(formattedIngredient, null, 2));
     return await Ingredient.create(formattedIngredient);
 };
 
 const ingredientToDbFormat = (reqIngredient, formattedIngredient) => {
-    const fields = ["name", "category", "servingSize", "costPer100"];
+    const fields = [
+        "name",
+        "category",
+        "servingSize",
+        "costPer100",
+        "imageUrl",
+    ];
     fields.forEach((field) => {
         if (reqIngredient[field] != null) {
             formattedIngredient[field] = reqIngredient[field];
         }
     });
     nutrientIds.forEach((value, key) => {
-        if (!reqIngredient[key]) {
+        console.log("my key", key, "my reqIng", reqIngredient);
+        if (!reqIngredient.foodNutrients[key]) {
             return;
         }
         const element = formattedIngredient.foodNutrients.find((nutrient) =>
             nutrient.foodNutrient.equals(value),
         );
         if (element) {
-            element.amountPer100 = reqIngredient[key];
+            element.amountPer100 = reqIngredient.foodNutrients[key];
         } else {
             formattedIngredient.foodNutrients.push({
                 foodNutrient: value,
-                amountPer100: reqIngredient[key],
+                amountPer100: reqIngredient.foodNutrients[key],
             });
         }
     });
@@ -45,10 +55,12 @@ const ingredientToDbFormat = (reqIngredient, formattedIngredient) => {
 };
 const responseIngredient = (ingredient) => {
     const response = {
+        _id: ingredient._id,
         name: ingredient.name,
         category: ingredient.category,
         servingSize: ingredient.servingSize,
         costPerServing: ingredient.costPerServing,
+        imageUrl: ingredient.imageUrl,
         foodNutrients: Object.fromEntries(
             ingredient.foodNutrients.map((nutrient) => [
                 nutrient.foodNutrient.name,
@@ -56,7 +68,6 @@ const responseIngredient = (ingredient) => {
             ]),
         ),
     };
-    console.log(JSON.stringify(response, null, 2));
     return response;
 };
 

@@ -29,10 +29,16 @@ const IngredientSchema = mongoose.Schema({
             },
             amountPer100: {
                 type: Number,
-                required: [true, "please provide nutrient amount"],
+                default: 0,
+                // required: [true, "please provide nutrient amount"],
             },
         },
     ],
+
+    imageUrl: {
+        type: String,
+        default: "/images/Image-not-found.png",
+    },
 });
 
 const Ingredient = mongoose.model("ingredient", IngredientSchema);

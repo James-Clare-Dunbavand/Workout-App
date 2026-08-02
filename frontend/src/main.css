@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+:root {
+    --primary-black: rgb(27, 27, 27);
+    --secondary-black: rgb(45, 45, 45);
+    --off-white: rgb(243, 243, 243);
+    --navbar-height: 70px;
+    --sidebar-width: 15vw;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+#body {
+    min-height: 0;
+}

@@ -11,9 +11,11 @@
         "test": "jest"
     },
     "dependencies": {
+        "cloudinary": "^2.10.0",
         "dotenv": "^17.3.1",
         "express": "^4.22.1",
         "express-async-errors": "^3.1.1",
+        "express-fileupload": "^1.5.2",
         "mongoose": "^9.3.1"
     },
     "devDependencies": {

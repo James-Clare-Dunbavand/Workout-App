@@ -1,0 +1,72 @@
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    overflow: hidden;
+}
+.sidebar-card {
+    display: flex;
+    flex-direction: column;
+    border-color: #f5f5f5;
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 0px;
+    overflow: hidden;
+    background-color: white;
+}
+
+#sidebar-ingredients {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 5px;
+}
+.sidebar-card img {
+}
+
+.quantity-selector {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    padding: 3px;
+}
+.quantity-selector input {
+    min-width: 0;
+    text-align: center;
+}
+
+#item-builder-header {
+    flex-shrink: 0;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--off-white);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--secondary-black);
+    border-radius: 10px;
+    margin: 2px;
+}
+
+#sidebar-ingredients::-webkit-scrollbar {
+    width: 8px;
+}
+
+#sidebar-ingredients::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#sidebar-ingredients::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2); /* or your theme color */
+    border-radius: 100px;
+}
+
+#sidebar-ingredients::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}

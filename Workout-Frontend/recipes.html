@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ingredients</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        />
+        <link href="css/components/navbar.css" rel="stylesheet" />
+        <link href="css/components/card.css" rel="stylesheet" />
+        <link href="css/components/sidebar.css" rel="stylesheet" />
+        <link href="css/global.css" rel="stylesheet" />
+        <link href="css/recipes.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <nav id="nav-bar">
+            <button type="button" id="nutrition-button">Nutrition</button>
+            <button type="button" id="workout-button">Workout</button>
+        </nav>
+
+        <section id="search-bar">
+            <input type="text" name="search-bar" value="" id="search-input" />
+        </section>
+        <div id="main-page-wrapper">
+            <section id="sidebar">
+                <form id="item-builder-header">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Recipe Name..."
+                    />
+
+                    <input id="image-input" type="file" name="imageUrl" />
+                    <ul class="recipe-nutrients">
+                        <li data-nutrient="calorie">
+                            Calorie: <span class="value">0</span>
+                        </li>
+                        <li data-nutrient="fat">
+                            Fat: <span class="value">0</span>
+                        </li>
+                        <li data-nutrient="fiber">
+                            Fiber: <span class="value">0</span>
+                        </li>
+                        <li data-nutrient="protein">
+                            Protein: <span class="value">0</span>
+                        </li>
+                        <li data-nutrient="carbs">
+                            Carbs: <span class="value">0</span>
+                        </li>
+                        <li data-nutrient="sodium">
+                            Sodium: <span class="value">0</span>
+                        </li>
+                    </ul>
+
+                    <input type="submit" value="Create" />
+                </form>
+                <ul id="sidebar-recipes"></ul>
+            </section>
+
+            <section id="recipes"></section>
+        </div>
+    </body>
+    <script type="module" src="scripts/recipes.js"></script>
+</html>

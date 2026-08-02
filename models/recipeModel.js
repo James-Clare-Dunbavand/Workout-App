@@ -1,15 +1,6 @@
 const mongoose = require("mongoose");
 const Ingredient = require("./ingredientModel.js");
 
-const IngredientsSchema = mongoose.Schema({
-    name: {
-        type: String,
-    },
-    quantity: {
-        type: Number,
-    },
-});
-
 const RecipeSchema = mongoose.Schema({
     name: {
         type: String,
@@ -30,12 +21,15 @@ const RecipeSchema = mongoose.Schema({
             },
         },
     ],
+    imageUrl: {
+        type: String,
+        default: "/images/Image-not-found.png",
+    },
+    portions: {
+        type: Number,
+        default: 1,
+    },
 });
-
-// RecipeSchemu.pre("save", async function () {
-//     if (this.getIngredients().length < this.ingredients.length) {
-//     }
-// });
 
 RecipeSchema.methods.getIngredients = async function () {
     const ingredients = await Ingredient.find({
