@@ -18,7 +18,6 @@ export default function IngredientBuilder({
     const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const formData = new FormData(event.currentTarget);
         const nutrientFields = [
             "calorie",
             "fat",
@@ -27,6 +26,7 @@ export default function IngredientBuilder({
             "carbs",
             "sodium",
         ] as const;
+        const formData = new FormData(event.currentTarget);
 
         const foodNutrients: Partial<Record<Nutrient, number>> = {};
         nutrientFields.forEach((nutrient) => {
